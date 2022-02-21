@@ -1,6 +1,6 @@
 # todo
 
-An android and desktop app where you can type tasks and complete them (except I gave no way to eliminate tasks and they are persistent in the local drive so...) along with a pomodoro timer (that resets everytime you change the page.)
+An android and desktop app where you can type tasks and complete them along with a pomodoro timer (that resets everytime you change the page.)
 
 Not my finest creation.
 
