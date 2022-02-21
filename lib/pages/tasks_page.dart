@@ -23,11 +23,22 @@ class _TasksPageState extends State<TasksPage> {
           return Column(
             children: [
               const SizedBox(height: 16.0),
-              TodoTask(
-                title: tasks[i].title,
-                description: tasks[i].description,
-                rank: tasks[i].rank,
-                done: tasks[i].done,
+              Dismissible(
+                child: TodoTask(
+                  title: tasks[i].title,
+                  description: tasks[i].description,
+                  rank: tasks[i].rank,
+                  done: tasks[i].done,
+                ),
+                key: ValueKey<TodoTaskData>(
+                    Provider.of<TaskModel>(context, listen: false).tasks[i]),
+                onDismissed: (_) {
+                  setState(() {
+                    Provider.of<TaskModel>(context, listen: false)
+                        .removeTodoTask(tasks[i]);
+                  });
+                },
+                background: Container(color: Colors.black),
               ),
             ],
           );

@@ -22,6 +22,7 @@ Future<void> main() async {
   Hive.registerAdapter(
       TodoTaskAdapter()); // Needed in order to put() TodoTaskData objects into the database.
   await Hive.openBox<TodoTaskData>('tasks');
+
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider<TaskModel>(
       create: (_) => TaskModel(),

@@ -11,14 +11,12 @@ class TaskModel extends ChangeNotifier {
   }
 
   void addTodoTask(TodoTaskData n) {
-    tasks.add(n);
-    Hive.box<TodoTaskData>('tasks').add(n);
+    Hive.box<TodoTaskData>('tasks').put(n.title, n);
     notifyListeners();
   }
 
   void removeTodoTask(TodoTaskData r) {
-    tasks.add(r);
-    Hive.box<TodoTaskData>('tasks').delete(r);
+    Hive.box<TodoTaskData>('tasks').delete(r.title);
     notifyListeners();
   }
 }
