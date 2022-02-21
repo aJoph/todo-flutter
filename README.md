@@ -1,10 +1,8 @@
 # todo
 
-A new Flutter project.
+An android and desktop app where you can type tasks and complete them (except I gave no way to eliminate tasks and they are persistent in the local drive so...) along with a pomodoro timer (that resets everytime you change the page. 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
+## Getting Started with Flutter.
 
 A few resources to get you started if this is your first Flutter project:
 
