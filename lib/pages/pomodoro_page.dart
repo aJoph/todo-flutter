@@ -1,7 +1,8 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo/models/pomodoro_model.dart';
+
+import '../models/pomodoro_model.dart';
 
 class PomodoroPage extends StatefulWidget {
   const PomodoroPage({Key? key}) : super(key: key);
@@ -18,17 +19,17 @@ class _PomodoroPageState extends State<PomodoroPage> {
     int _timerDuration =
         Provider.of<PomodoroModel>(context).currentTimerDuration;
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       // CLOCK -----------------------------------------------------------------
       body: Center(
         child: Container(
           // Container Styling -------------------------------------------------
           padding: const EdgeInsets.all(0),
-          width: MediaQuery.of(context).size.width * (3 / 4),
+          width: MediaQuery.of(context).size.width * (3 / 5),
           height: MediaQuery.of(context).size.height * (3 / 5),
-          decoration: const BoxDecoration(
-              color: Colors.deepOrangeAccent,
-              borderRadius: BorderRadius.all(Radius.circular(8))),
+          decoration:  BoxDecoration(
+              color: Theme.of(context).colorScheme.secondary,
+              borderRadius: const BorderRadius.all(Radius.circular(8))),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -57,11 +58,11 @@ class _PomodoroPageState extends State<PomodoroPage> {
                 controller: _countDownController,
                 width: MediaQuery.of(context).size.width / 2,
                 height: MediaQuery.of(context).size.height / 2,
-                ringColor: Colors.orangeAccent,
+                ringColor: Theme.of(context).primaryColorLight,
                 ringGradient: null,
-                fillColor: Colors.amberAccent,
+                fillColor: Theme.of(context).colorScheme.onPrimary,
                 fillGradient: null,
-                backgroundColor: Colors.deepOrange[300],
+                backgroundColor: Theme.of(context).colorScheme.secondary,
                 backgroundGradient: null,
                 strokeWidth: 20.0,
                 strokeCap: StrokeCap.round,

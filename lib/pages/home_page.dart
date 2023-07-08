@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todo/helpers/new_task_dialogue.dart';
-import 'package:todo/pages/pomodoro_page.dart';
-import 'package:todo/pages/tasks_page.dart';
+import 'package:todo_flutter/pages/pomodoro_page.dart';
+import 'package:todo_flutter/pages/tasks_page.dart';
+
+import '../helpers/new_task_dialogue.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       // AppBar ------------------------------------------------------------
       appBar: AppBar(
         actions: <Widget>[
@@ -39,28 +40,26 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         tooltip: 'Add new task.',
-        child: const Icon(Icons.add),
         onPressed: () => showDialog(
             context: context, builder: (ctx) => const NewTaskDialogue()),
         shape: const BeveledRectangleBorder(
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(8))),
+        child: const Icon(Icons.add),
       ),
 
       // Bottom Navigation Bar --------------------------------------------
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentTabIndex,
         onTap: (value) => setState(() => _currentTabIndex = value),
-        backgroundColor: Colors.deepOrange[300],
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.task),
             label: 'Tasks',
-            backgroundColor: Colors.amberAccent,
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.watch),
-              label: 'Pomodoro',
-              backgroundColor: Colors.amberAccent),
+            icon: Icon(Icons.watch),
+            label: 'Pomodoro',
+          ),
         ],
       ),
     );

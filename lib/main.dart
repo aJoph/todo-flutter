@@ -1,20 +1,19 @@
 import 'dart:io';
 
+import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:todo/models/pomodoro_model.dart';
-import 'package:todo/models/task_model.dart';
-import 'package:todo/models/todo_task_data.dart';
-import 'package:todo/pages/home_page.dart';
-import 'package:desktop_window/desktop_window.dart';
+import 'package:todo_flutter/pages/home_page.dart';
+import 'models/pomodoro_model.dart';
+import 'models/task_model.dart';
+import 'models/todo_task_data.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding
       .ensureInitialized(); // Needed for DesktopWindow to work.
-  if (Platform.isAndroid || Platform.isIOS || Platform.isFuchsia) {
-    // If the platform is mobile, don't use DesktopWindow.
-  } else {
+      
+  if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
     await DesktopWindow.setMinWindowSize(const Size(680, 420));
   }
   // Initiating database.
@@ -39,7 +38,6 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      color: Colors.amberAccent,
       debugShowCheckedModeBanner: false,
       title: 'Mera Tasks',
       theme: todoTheme,
@@ -48,9 +46,6 @@ class TodoApp extends StatelessWidget {
   }
 }
 
-ThemeData todoTheme = ThemeData(
-  primarySwatch: Colors.amber,
-  primaryColor: const Color(0xAA292950),
-  backgroundColor: Colors.black,
-  cardColor: Colors.deepOrangeAccent,
+ThemeData todoTheme = ThemeData.from(
+  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
 );

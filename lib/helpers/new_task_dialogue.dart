@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo/models/task_model.dart';
-import 'package:todo/models/todo_task_data.dart';
+
+import '../models/task_model.dart';
+import '../models/todo_task_data.dart';
 
 class NewTaskDialogue extends StatefulWidget {
   const NewTaskDialogue({Key? key}) : super(key: key);
@@ -63,11 +64,11 @@ class _NewTaskDialogueState extends State<NewTaskDialogue> {
               decoration: const InputDecoration(labelText: 'Description.'),
             ),
             // Slider
-            Slider.adaptive(
+            Slider(
               label: '$_sliderValue',
-              value: _sliderValue,
+              value: _sliderValue.toInt().toDouble(),
               onChanged: (newSliderValue) =>
-                  setState(() => _sliderValue = newSliderValue),
+                  setState(() => _sliderValue = newSliderValue.round().toDouble()),
               divisions: 10,
               min: 1,
               max: 10,

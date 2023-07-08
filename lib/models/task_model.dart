@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:todo/models/todo_task_data.dart';
+import 'package:todo_flutter/models/todo_task_data.dart';
 
 class TaskModel extends ChangeNotifier {
   List<TodoTaskData> get tasks {
